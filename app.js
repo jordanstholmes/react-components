@@ -6,15 +6,24 @@ var Veggies = () => (
   <li>Veggies YO!</li>
 );
 
-var GroceryListItem = (props) => { 
+// var GroceryListItem = (props) => { 
 
-  var onListItemClick = (event) => {
-    console.log('clicked a list item');
-  };
+//   var onListItemClick = (event) => {
+//     console.log('clicked a list item');
+//   };
 
-  return <li onClick={onListItemClick}>{props.item}</li>;
-};
+//   return <li onClick={onListItemClick}>{props.item}</li>;
+// };
 
+class GroceryListItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return <li>{this.props.item}</li>;
+  }
+}
 
 var GroceryList = (props) => {
   return (
@@ -24,7 +33,7 @@ var GroceryList = (props) => {
   );
 }
 
-var myList = ['tisk', 'task', 'adding more'];
+var myList = ['tisk', 'task', 'adding more', 'I still work'];
 ReactDOM.render(<GroceryList listItems={myList} />, document.getElementById('app'));
 
 // TODO
