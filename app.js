@@ -18,10 +18,37 @@ var Veggies = () => (
 class GroceryListItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      done: false,
+      hover: false
+    };
+  }
+
+  toggleHover() {
+
+    this.setState({
+      done: this.state.done,
+      hover: !this.state.hover
+    });
+  }
+
+  onListItemClick() {
+    this.setState({
+      done: !this.state.done
+    });
   }
 
   render() {
-    return <li>{this.props.item}</li>;
+    var style = {
+      textDecoration: this.state.done ? 'line-through' : 'none',
+      fontWeight: this.state.hover ? 'bold' : 'normal'
+    }
+
+    // I don't fully understand why we're using bind below
+
+    return (
+      <li style={style} onMouseEnter={this.toggleHover.bind(this)} onMouseLeave={this.toggleHover.bind(this)} onClick={this.onListItemClick.bind(this)}>{this.props.item}</li>
+    );
   }
 }
 
